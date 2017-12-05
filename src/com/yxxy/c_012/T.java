@@ -36,7 +36,7 @@ public class T {
 	
 	public static void main(String[] args) {
 		T t = new T();
-		
+
 		new Thread(t::m, "t1").start();
 		
 		try {
