@@ -43,7 +43,7 @@ public class MyContainer4 {
 		
 		new Thread(() -> {
 			synchronized(lock) {
-				System.out.println("t2����");
+				System.out.println("t2启动");
 				if(c.size() != 5) {
 					try {
 						lock.wait();
@@ -51,8 +51,8 @@ public class MyContainer4 {
 						e.printStackTrace();
 					}
 				}
-				System.out.println("t2 ����");
-				//֪ͨt1����ִ��
+				System.out.println("t2 结束");
+				//通知t1继续执行
 				lock.notify();
 			}
 			
@@ -65,7 +65,7 @@ public class MyContainer4 {
 		}
 
 		new Thread(() -> {
-			System.out.println("t1����");
+			System.out.println("t1启动");
 			synchronized(lock) {
 				for(int i=0; i<10; i++) {
 					c.add(new Object());
@@ -73,7 +73,7 @@ public class MyContainer4 {
 					
 					if(c.size() == 5) {
 						lock.notify();
-						//�ͷ�������t2����ִ��
+						//释放锁,让t2得以执行
 						try {
 							lock.wait();
 						} catch (InterruptedException e) {

@@ -10,7 +10,7 @@ public class T {
 
 	private int count = 10;
 	
-	public synchronized void m() { //等同于在方法的代码执行时要synchronized(this)
+	public synchronized void m() { //等同于在方法的代码执行时要synchronized(this),锁定的是当前对象
 		count--;
 		System.out.println(Thread.currentThread().getName() + " count = " + count);
 	}

@@ -47,7 +47,7 @@ public class MyContainer1 {
 					break;
 				}
 			}
-			System.out.println("t2 ����");
+			System.out.println("t2 结束");
 		}, "t2").start();
 	}
 }

@@ -42,16 +42,25 @@ public class ReentrantLock4 {
 		t1.start();
 		
 		Thread t2 = new Thread(()->{
+			boolean getLock = false;
 			try {
 				//lock.lock();
-				lock.lockInterruptibly(); //可以对interrupt()方法做出响应
+				getLock = lock.tryLock();
+				if(!getLock){
+					System.out.println("t2没有拿到锁,停止当前线程!");
+					lock.lockInterruptibly(); //可以对interrupt()方法做出响应
+				}
+
 				System.out.println("t2 start");
 				TimeUnit.SECONDS.sleep(5);
 				System.out.println("t2 end");
 			} catch (InterruptedException e) {
 				System.out.println("interrupted!");
 			} finally {
-				lock.unlock();
+				if(getLock){
+					lock.unlock();
+				}
+
 			}
 		});
 		t2.start();

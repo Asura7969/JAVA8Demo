@@ -40,7 +40,7 @@ public class MyContainer3 {
 		
 		new Thread(() -> {
 			synchronized(lock) {
-				System.out.println("t2����");
+				System.out.println("t2启动");
 				if(c.size() != 5) {
 					try {
 						lock.wait();
@@ -48,7 +48,7 @@ public class MyContainer3 {
 						e.printStackTrace();
 					}
 				}
-				System.out.println("t2 ����");
+				System.out.println("t2 结束");
 			}
 			
 		}, "t2").start();
@@ -60,7 +60,7 @@ public class MyContainer3 {
 		}
 
 		new Thread(() -> {
-			System.out.println("t1����");
+			System.out.println("t1启动");
 			synchronized(lock) {
 				for(int i=0; i<10; i++) {
 					c.add(new Object());
