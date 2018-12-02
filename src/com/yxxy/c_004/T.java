@@ -18,7 +18,7 @@ public class T {
 	}
 	
 	public static void mm() throws InterruptedException {
-		synchronized(T.class) { //考虑一下这里写synchronized(this)是否可以？
+		synchronized(T.class) { //考虑一下这里写synchronized(this)是否可以？答案：可以?
 			if(count == 0){
 				return;
 			}
