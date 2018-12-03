@@ -83,3 +83,6 @@ out/production/JAVA8Demo/META-INF/
 out/production/JAVA8Demo/com/yxxy/c_024/readme.txt
 out/production/JAVA8Demo/com/yxxy/c_025/readme.txt
 out/production/JAVA8Demo/com/yxxy/c_026/readme.txt
+/.idea/
+/JAVA8Demo.iml
+/out/
