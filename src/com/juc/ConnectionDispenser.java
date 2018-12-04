@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class ConnectionDispenser {
     static String DB_URL = "jdbc:mysql://localhost/mydatabase";
 
-    private ThreadLocal<Connection> connectionHolder
+    private static ThreadLocal<Connection> connectionHolder
             = new ThreadLocal<Connection>() {
                 public Connection initialValue() {
                     try {
@@ -22,7 +22,7 @@ public class ConnectionDispenser {
                     } catch (SQLException e) {
                         throw new RuntimeException("Unable to acquire Connection, e");
                     }
-                };
+                }
             };
 
     public Connection getConnection() {

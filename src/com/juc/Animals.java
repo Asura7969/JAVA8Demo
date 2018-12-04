@@ -20,14 +20,15 @@ public class Animals {
         Animal candidate = null;
 
         // animals confined to method, don't let them escape!
-        animals = new TreeSet<Animal>(new SpeciesGenderComparator());
+        // animals 封闭在方法中，不要使他们逸出
+        animals = new TreeSet<>(new SpeciesGenderComparator());
         animals.addAll(candidates);
         for (Animal a : animals) {
             if (candidate == null || !candidate.isPotentialMate(a))
                 candidate = a;
             else {
                 ark.load(new AnimalPair(candidate, a));
-                ++numPairs;
+                ++ numPairs;
                 candidate = null;
             }
         }
@@ -74,7 +75,7 @@ public class Animals {
     }
 
     class Ark {
-        private final Set<AnimalPair> loadedAnimals = new HashSet<AnimalPair>();
+        private final Set<AnimalPair> loadedAnimals = new HashSet<>();
 
         public void load(AnimalPair pair) {
             loadedAnimals.add(pair);
