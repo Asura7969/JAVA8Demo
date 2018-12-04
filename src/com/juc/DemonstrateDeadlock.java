@@ -2,8 +2,8 @@ package com.juc;
 
 import java.util.*;
 
-import net.jcip.examples.DynamicOrderDeadlock.Account;
-import net.jcip.examples.DynamicOrderDeadlock.DollarAmount;
+import com.juc.DynamicOrderDeadlock.Account;
+import com.juc.DynamicOrderDeadlock.DollarAmount;
 
 /**
  * DemonstrateDeadlock

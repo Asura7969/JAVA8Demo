@@ -2,7 +2,7 @@ package com.juc;
 
 import java.util.concurrent.*;
 import static java.util.concurrent.Executors.newScheduledThreadPool;
-import static net.jcip.examples.LaunderThrowable.launderThrowable;
+import static com.juc.LaunderThrowable.launderThrowable;
 
 /**
  * TimedRun2
@@ -20,6 +20,7 @@ public class TimedRun2 {
         class RethrowableTask implements Runnable {
             private volatile Throwable t;
 
+            @Override
             public void run() {
                 try {
                     r.run();
@@ -38,6 +39,7 @@ public class TimedRun2 {
         final Thread taskThread = new Thread(task);
         taskThread.start();
         cancelExec.schedule(new Runnable() {
+            @Override
             public void run() {
                 taskThread.interrupt();
             }

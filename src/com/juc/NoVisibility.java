@@ -1,5 +1,7 @@
 package com.juc;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * NoVisibility
  * <p/>
@@ -13,16 +15,20 @@ public class NoVisibility {
     private static int number;
 
     private static class ReaderThread extends Thread {
+        @Override
         public void run() {
-            while (!ready)
+            while (!ready) {
                 Thread.yield();
+            }
             System.out.println(number);
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         new ReaderThread().start();
+        TimeUnit.MILLISECONDS.sleep(3000);
         number = 42;
         ready = true;
+        System.out.println("设置完毕");
     }
 }

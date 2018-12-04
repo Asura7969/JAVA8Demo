@@ -1,7 +1,7 @@
 package com.juc;
 
 import java.util.concurrent.*;
-import static net.jcip.examples.LaunderThrowable.launderThrowable;
+import static com.juc.LaunderThrowable.launderThrowable;
 
 /**
  * TimedRun
